@@ -1,27 +1,59 @@
-# DaAdminUI
+## App Info
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.
+This project is an Admin User Interface to consum the DA Node API (API project in my Github)
 
-## Development server
+### Author
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Davide Agosti
+[Davide Agosti](http://davideagosti.me)
 
-## Code scaffolding
+### Version
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+0.1.2
 
-## Build
+### License
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+This project is licensed under the MIT License
 
-## Running unit tests
+### Phase I - Backend API
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+[DA Node API](https://github.com/dasixtytwo/daNodeApi)
 
-## Running end-to-end tests
+### Phase II - UI Backend, Frontend
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Phase III - Improvements!
 
-## Further help
+## Quick Start
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```bash
+$ git clone https://github.com/dasixtytwo/daAdminUI.git
+
+
+# hen checkout the branch as follow
+$ git checkout 'branch_name'
+
+This project uses ES6 it would be best if you use **node 10+**
+after checkout be sure to run
+
+# Install dependencies for server using npm
+$ npm install
+
+# Install dependencies using yarn
+$ yarn install
+
+# Run the angular
+ng serve
+
+# Server runs on http://localhost:4200
+
+# Run the Express server (follow the READ Me Phase I on  daNodepi project)
+npm run server
+
+# Server runs on http://localhost:3000
+```
+
+## Deployment
+
+There is a Heroku post build script so that you do not have to compile your React frontend manually, it is done on the server. Simply push to Heroku and it will build and load the client index.html page
+
+## Happy Coding!
