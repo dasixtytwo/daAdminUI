@@ -19,7 +19,7 @@ This project is licensed under the MIT License
 
 [DA Node API](https://github.com/dasixtytwo/daNodeApi)
 
-### Phase II - UI Backend, Frontend
+### Phase II - UI Backend
 
 ### Phase III - Improvements!
 
