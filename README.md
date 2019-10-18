@@ -32,8 +32,7 @@ $ git clone https://github.com/dasixtytwo/daAdminUI.git
 # hen checkout the branch as follow
 $ git checkout 'branch_name'
 
-This project uses ES6 it would be best if you use **node 10+**
-after checkout be sure to run
+This project uses Angular 8+
 
 # Install dependencies for server using npm
 $ npm install
