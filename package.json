@@ -1,5 +1,5 @@
 {
-  "name": "da-ng-api-resume",
+  "name": "da-admin-ui",
   "version": "0.1.5",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:stats": "ng build --stats-json",
+    "analyze": "webpack-bundle-analyzer dist/daAdminUI/stats-es2015.json"
   },
   "private": true,
   "dependencies": {
