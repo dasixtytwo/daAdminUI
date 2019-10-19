@@ -3,16 +3,24 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { WebRequestService } from '@theme/services/web-request.service';
 import { Router } from '@angular/router';
 import { shareReplay, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private isloggedIn: boolean;
+
   constructor(
     private webService: WebRequestService,
     private router: Router,
     private http: HttpClient
-  ) {}
+  ) {
+    this.isloggedIn = false;
+  }
 
   login(email: string, password: string) {
     return this.webService.login(email, password).pipe(
@@ -25,8 +33,14 @@ export class AuthService {
           res.headers.get('x-refresh-token')
         );
         console.log('LOGGED IN!');
+        this.isloggedIn = true;
+        return of(this.isloggedIn);
       })
     );
+  }
+
+  isUserLoggedIn(): boolean {
+    return this.isloggedIn;
   }
 
   signup(email: string, password: string) {
@@ -47,7 +61,7 @@ export class AuthService {
   logout() {
     this.removeSession();
 
-    this.router.navigate(['/auth/login']);
+    this.router.navigate(['/login']);
   }
 
   getAccessToken() {

@@ -1,0 +1,125 @@
+<div class="page-body">
+  <!--profile cover start-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="cover-profile" *ngFor="let profile of profiles">
+        <div class="profile-bg-img">
+          <img
+            class="profile-bg-img img-fluid"
+            src="assets/images/user-profile/bg-img1.jpg"
+            alt="bg-img"
+          />
+          <div class="card-block user-info">
+            <div class="col-md-12">
+              <div class="media-left">
+                <a href="javascript:" class="profile-image">
+                  <img
+                    class="user-img img-radius"
+                    src="assets/images/user-profile/bg-img1.jpg"
+                    alt="user-img"
+                    height="100"
+                    width="100"
+                  />
+                </a>
+              </div>
+              <div class="media-body row">
+                <div class="col-lg-12">
+                  <div class="user-title">
+                    <h2>Davide Agosti</h2>
+                    <span class="text-white">Web Developer</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="pull-right cover-btn">
+                    <button
+                      type="button"
+                      class="btn btn-primary m-r-10 m-b-5 ripple light"
+                    >
+                      <i class="icofont icofont-plus"></i> Follow
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary m-b-5 ripple light"
+                    >
+                      <i class="icofont icofont-ui-messaging"></i> Message
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--profile cover end-->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="md-tabs md-card-tabs">
+        <ngb-tabset>
+          <ngb-tab title="Personal Info">
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <!-- personal card start -->
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-header-text">About Me</h5>
+                  <button
+                    id="edit-btn"
+                    type="button"
+                    class="btn btn-sm btn-primary pull-right ripple light"
+                    (click)="toggleEditProfile()"
+                  >
+                    <i class="icofont {{ editProfileIcon }}"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <!-- end of view-info -->
+                  <h1>About me and other</h1>
+                  <!-- end of edit-info -->
+                </div>
+                <!-- end of card-body -->
+              </div>
+              <!-- personal card end-->
+            </div>
+          </ngb-tab>
+          <ngb-tab title="User's Services">
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <!-- info card start -->
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-header-text">User Services</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div
+                        class="card b-l-success business-info services m-b-20"
+                      >
+                        <h1>Services</h1>
+                        <!-- end of card-body -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- info card end -->
+            </div>
+          </ngb-tab>
+          <ngb-tab title="User's Contacts">
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-header-text">Contact</h5>
+                </div>
+                <div class="card-body">
+                  Contact body
+                </div>
+              </div>
+            </div>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+</div>
