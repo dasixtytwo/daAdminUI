@@ -8,6 +8,7 @@ import {
   trigger
 } from '@angular/animations';
 import { MenuItems } from '@theme/components/menu-items/menu-items';
+import { AuthService } from '@theme/services/auth/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -177,7 +178,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     }
   };
 
-  constructor(public menuItems: MenuItems) {
+  constructor(private authService: AuthService, public menuItems: MenuItems) {
     this.animateSidebar = '';
     this.navType = 'st2';
     this.themeLayout = 'vertical';
@@ -238,6 +239,10 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.setBackgroundPattern('theme1');
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   onResize(event) {

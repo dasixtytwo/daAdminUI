@@ -59,9 +59,10 @@ export class AuthService {
   }
 
   logout() {
+    // remove user from local storage and set current user to null
     this.removeSession();
-
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
+    console.log('LOGED OUT!');
   }
 
   getAccessToken() {
