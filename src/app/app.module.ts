@@ -16,12 +16,6 @@ import { BreadcrumbsComponent } from 'app/layout/admin/breadcrumbs/breadcrumbs.c
 import { WebReqInterceptor } from '@theme/interfaces/web-req.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AdminComponent,
-    AuthComponent,
-    BreadcrumbsComponent
-  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -29,6 +23,12 @@ import { WebReqInterceptor } from '@theme/interfaces/web-req.interceptor';
     SharedModule,
     HttpClientModule,
     FormsModule
+  ],
+  declarations: [
+    AppComponent,
+    AdminComponent,
+    AuthComponent,
+    BreadcrumbsComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true },

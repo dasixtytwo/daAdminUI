@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
+  model: any = {};
 
   ngOnInit() {
     document.querySelector('body').setAttribute('themebg-pattern', 'theme1');
   }
 
   onHandleSignUp(email: string, password: string) {
+    console.log('SignUp:', { email, password });
     this.authService
       .signup(email, password)
       .subscribe((res: HttpResponse<any>) => {

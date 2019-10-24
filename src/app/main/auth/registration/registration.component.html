@@ -4,7 +4,16 @@
     <div class="row">
       <div class="col-sm-12">
         <!-- Authentication card start -->
-        <form class="md-float-material form-material">
+        <form
+          class="md-float-material form-material"
+          name="form"
+          (ngSubmit)="
+            f.form.valid && onHandleSignUp(email.value, password.value)
+          "
+          #f="ngForm"
+          [mustMatch]="['password', 'confirmPassword']"
+          novalidate
+        >
           <div class="text-center">
             <img src="assets/images/logo.png" alt="logo.png" />
           </div>
@@ -37,38 +46,82 @@
               <div class="form-group form-primary">
                 <input
                   type="text"
-                  class="form-control"
-                  required=""
-                  #emailInput
                   name="email"
+                  class="form-control"
+                  [(ngModel)]="model.email"
+                  [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                  #email="ngModel"
+                  required
+                  email
                 />
                 <span class="form-bar"></span>
                 <label class="float-label">Your Email Address</label>
+                <div
+                  *ngIf="f.submitted && email.invalid"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="email.errors.required">Email is required</div>
+                  <div *ngIf="email.errors.email">
+                    Email must be a valid email address
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group form-primary">
                     <input
                       type="password"
-                      class="form-control"
-                      required=""
-                      #passInput
                       name="password"
+                      class="form-control"
+                      [(ngModel)]="model.password"
+                      #password="ngModel"
+                      [ngClass]="{
+                        'is-invalid': f.submitted && password.invalid
+                      }"
+                      minlength="6"
+                      required
                     />
                     <span class="form-bar"></span>
                     <label class="float-label">Password</label>
+                    <div
+                      *ngIf="f.submitted && password.invalid"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="password.errors.required">
+                        Password is required
+                      </div>
+                      <div *ngIf="password.errors.minlength">
+                        Password must be at least 6 characters
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group form-primary">
                     <input
                       type="password"
+                      name="confirmPassword"
                       class="form-control"
-                      required=""
-                      name="confirm-password"
+                      [(ngModel)]="model.confirmPassword"
+                      #confirmPassword="ngModel"
+                      [ngClass]="{
+                        'is-invalid': f.submitted && confirmPassword.invalid
+                      }"
+                      required
                     />
                     <span class="form-bar"></span>
                     <label class="float-label">Confirm Password</label>
+                    <div
+                      *ngIf="f.submitted && confirmPassword.invalid"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="confirmPassword.errors.required">
+                        Confirm Password is required
+                      </div>
+                      <div *ngIf="confirmPassword.errors.mustMatch">
+                        Passwords must match
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -107,7 +160,6 @@
                   <button
                     type="submit"
                     class="btn btn-primary btn-md btn-block waves-light text-center m-b-20 ripple"
-                    (click)="onHandleSignUp(emailInput.value, passInput.value)"
                   >
                     Sign up now
                   </button>
