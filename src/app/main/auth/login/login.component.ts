@@ -12,6 +12,7 @@ import { themeAnimations } from '@theme/animations/index';
 })
 export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
+  model: any = {};
 
   ngOnInit() {
     document.querySelector('body').setAttribute('themebg-pattern', 'theme1');
