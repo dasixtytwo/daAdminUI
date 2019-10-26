@@ -11,6 +11,7 @@
           "
           #f="ngForm"
           class="md-float-material form-material"
+          [ngClass]="{ 'was-validated': f.submitted }"
           novalidate
         >
           <div class="text-center">
@@ -49,11 +50,14 @@
               </p>
               <div class="form-group form-primary">
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   class="form-control"
                   [(ngModel)]="model.email"
-                  [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                  [ngClass]="{
+                    'is-invalid': f.submitted && email.invalid,
+                    'is-valid': f.submitted && !email.invalid
+                  }"
                   #email="ngModel"
                   required
                   email
@@ -77,7 +81,10 @@
                   class="form-control"
                   [(ngModel)]="model.password"
                   #password="ngModel"
-                  [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                  [ngClass]="{
+                    'is-invalid': f.submitted && password.invalid,
+                    'is-valid': f.submitted && !password.invalid
+                  }"
                   minlength="6"
                   required
                 />
@@ -94,6 +101,9 @@
                     Password must be at least 6 characters
                   </div>
                 </div>
+              </div>
+              <div *ngIf="errorMsg" class="alert alert-danger">
+                <strong>{{ errorMsg }}</strong>
               </div>
               <div class="row m-t-25 text-left">
                 <div class="col-12">

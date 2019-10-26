@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpResponse,
+  HttpErrorResponse
+} from '@angular/common/http';
 import { WebRequestService } from '@theme/services/web-request.service';
 import { Router } from '@angular/router';
-import { shareReplay, tap } from 'rxjs/operators';
+import { shareReplay, tap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +26,7 @@ export class AuthService {
     this.isloggedIn = false;
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string): Observable<Object> {
     return this.webService.login(email, password).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
@@ -35,8 +39,13 @@ export class AuthService {
         console.log('LOGGED IN!');
         this.isloggedIn = true;
         return of(this.isloggedIn);
-      })
+      }),
+      catchError(this.handleError)
     );
+  }
+
+  handleError(error: HttpErrorResponse) {
+    return throwError(error || 'Server Error');
   }
 
   isUserLoggedIn(): boolean {
