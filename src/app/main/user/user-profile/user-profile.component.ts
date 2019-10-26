@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
+
+import { ProfileService } from '@theme/services/profile/profile.service';
+import { Profile } from '@theme/models/profile';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,7 +26,14 @@ import { animate, style, transition, trigger } from '@angular/animations';
   ]
 })
 export class UserProfileComponent implements OnInit {
-  constructor() {}
+  profiles: Profile[];
 
-  ngOnInit() {}
+  constructor(private profileService: ProfileService, private router: Router) {}
+
+  ngOnInit() {
+    this.profileService.getProfiles().subscribe((profiles: Profile[]) => {
+      console.log('Profiles:', profiles);
+      this.profiles = profiles;
+    });
+  }
 }
