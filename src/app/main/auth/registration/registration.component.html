@@ -11,6 +11,7 @@
             f.form.valid && onHandleSignUp(email.value, password.value)
           "
           #f="ngForm"
+          [ngClass]="{ 'was-validated': f.submitted }"
           [mustMatch]="['password', 'confirmPassword']"
           novalidate
         >
@@ -45,11 +46,14 @@
               </p>
               <div class="form-group form-primary">
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   class="form-control"
                   [(ngModel)]="model.email"
-                  [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                  [ngClass]="{
+                    'is-invalid': f.submitted && email.invalid,
+                    'is-valid': f.submitted && !email.invalid
+                  }"
                   #email="ngModel"
                   required
                   email
@@ -76,7 +80,8 @@
                       [(ngModel)]="model.password"
                       #password="ngModel"
                       [ngClass]="{
-                        'is-invalid': f.submitted && password.invalid
+                        'is-invalid': f.submitted && password.invalid,
+                        'is-valid': f.submitted && !password.invalid
                       }"
                       minlength="6"
                       required
@@ -105,7 +110,8 @@
                       [(ngModel)]="model.confirmPassword"
                       #confirmPassword="ngModel"
                       [ngClass]="{
-                        'is-invalid': f.submitted && confirmPassword.invalid
+                        'is-invalid': f.submitted && confirmPassword.invalid,
+                        'is-valid': f.submitted && !confirmPassword.invalid
                       }"
                       required
                     />
@@ -117,6 +123,9 @@
                     >
                       <div *ngIf="confirmPassword.errors.required">
                         Confirm Password is required
+                      </div>
+                      <div *ngIf="confirmPassword.errors.minlength">
+                        Password must be at least 6 characters
                       </div>
                       <div *ngIf="confirmPassword.errors.mustMatch">
                         Passwords must match

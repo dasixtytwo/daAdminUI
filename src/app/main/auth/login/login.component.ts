@@ -11,6 +11,7 @@ import { themeAnimations } from '@theme/animations/index';
   animations: themeAnimations
 })
 export class LoginComponent implements OnInit {
+  public errorMsg;
   constructor(private authService: AuthService, private router: Router) {}
   model: any = {};
 
@@ -19,14 +20,18 @@ export class LoginComponent implements OnInit {
   }
 
   onHandlelogin(email: string, password: string) {
-    this.authService
-      .login(email, password)
-      .subscribe((res: HttpResponse<any>) => {
+    this.authService.login(email, password).subscribe(
+      (res: HttpResponse<any>) => {
         if (res.status === 200) {
           // we have logged in successfully
           this.router.navigate(['/']);
         }
         console.log(res);
-      });
+      },
+      error => {
+        this.errorMsg = error.error;
+        console.log('Error occured: ', this.errorMsg);
+      }
+    );
   }
 }
