@@ -38,14 +38,8 @@ const MENUITEMS = [
         state: 'dashboard',
         short_label: 'D',
         name: 'Dashboard',
-        type: 'sub',
-        icon: 'icon-home',
-        children: [
-          {
-            state: 'default',
-            name: 'Default'
-          }
-        ]
+        type: 'link',
+        icon: 'icon-home'
       }
     ]
   },
@@ -82,11 +76,7 @@ const MENUITEMS = [
         children: [
           {
             state: 'profile',
-            name: 'User Profile'
-          },
-          {
-            state: 'card',
-            name: 'User Card'
+            name: 'Profile'
           }
         ]
       },

@@ -2,47 +2,29 @@
   <!--profile cover start-->
   <div class="row">
     <div class="col-lg-12">
-      <div class="cover-profile" *ngFor="let profile of profiles">
+      <div class="cover-profile">
         <div class="profile-bg-img">
-          <img
-            class="profile-bg-img img-fluid"
-            src="assets/images/user-profile/bg-img1.jpg"
-            alt="bg-img"
-          />
+          <img class="profile-bg-img img-fluid" src="assets/images/user-profile/bg-img1.jpg" alt="bg-img">
           <div class="card-block user-info">
             <div class="col-md-12">
               <div class="media-left">
                 <a href="javascript:" class="profile-image">
-                  <img
-                    class="user-img img-radius"
-                    src="assets/images/user-profile/bg-img1.jpg"
-                    alt="user-img"
-                    height="100"
-                    width="100"
-                  />
+                  <img class="user-img img-radius" src="assets/images/user-profile/user-img.jpg" alt="user-img">
                 </a>
               </div>
               <div class="media-body row">
                 <div class="col-lg-12">
                   <div class="user-title">
-                    <h2>Davide Agosti</h2>
-                    <span class="text-white">Web Developer</span>
+                    <h2>Davide A</h2>
+                    <span class="text-white">Web designer</span>
                   </div>
                 </div>
                 <div>
                   <div class="pull-right cover-btn">
-                    <button
-                      type="button"
-                      class="btn btn-primary m-r-10 m-b-5 ripple light"
-                    >
-                      <i class="icofont icofont-plus"></i> Follow
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary m-b-5 ripple light"
-                    >
-                      <i class="icofont icofont-ui-messaging"></i> Message
-                    </button>
+                    <button type="button" class="btn btn-primary m-r-10 m-b-5 ripple light"><i
+                        class="icofont icofont-plus"></i> Follow</button>
+                    <button type="button" class="btn btn-primary m-b-5 ripple light"><i
+                        class="icofont icofont-ui-messaging"></i> Message</button>
                   </div>
                 </div>
               </div>
@@ -53,70 +35,311 @@
     </div>
   </div>
   <!--profile cover end-->
-
   <div class="row">
     <div class="col-lg-12">
       <div class="md-tabs md-card-tabs">
         <ngb-tabset>
           <ngb-tab title="Personal Info">
-            <div [@fadeInOutTranslate] class="m-t-15">
-              <!-- personal card start -->
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="card-header-text">About Me</h5>
-                  <button
-                    id="edit-btn"
-                    type="button"
-                    class="btn btn-sm btn-primary pull-right ripple light"
-                    (click)="toggleEditProfile()"
-                  >
-                    <i class="icofont {{ editProfileIcon }}"></i>
-                  </button>
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <!-- personal card start -->
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-header-text">About Me</h5>
+                    <button id="edit-btn" type="button" class="btn btn-sm btn-primary pull-right ripple light"
+                      (click)="toggleEditProfile()">
+                      <i class="icofont {{ editProfileIcon }}"></i>
+                    </button>
+                  </div>
+                  <div class="card-body">
+                    <div class="view-info" *ngIf="editProfile">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="general-info">
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-6">
+                                <div class="table-responsive">
+                                  <table class="table m-0">
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">Full Name</th>
+                                        <td>Davide A</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Gender</th>
+                                        <td>Male</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Birth Date</th>
+                                        <td>December 23rd, 1962</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Marital Status</th>
+                                        <td>Engage</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Location</th>
+                                        <td>Scotland, UK</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                              <div class="col-lg-12 col-xl-6">
+                                <div class="table-responsive">
+                                  <table class="table">
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">Email</th>
+                                        <td><a href="javascript:;">Demo@phenix.com</a></td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Mobile Number</th>
+                                        <td>(0123) - 4567891</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Twitter</th>
+                                        <td>@davideagosti62</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Skype</th>
+                                        <td>mail.demo</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Website</th>
+                                        <td><a href="javascript:;">www.demo.com</a></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                            </div>
+                            <!-- end of row -->
+                          </div>
+                          <!-- end of general info -->
+                        </div>
+                        <!-- end of col-lg-12 -->
+                      </div>
+                      <!-- end of row -->
+                    </div>
+                    <!-- end of view-info -->
+                    <div class="edit-info" *ngIf="!editProfile">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="general-info form-material">
+                            <div class="row">
+                              <div class="col-lg-6 ">
+                                <div class="material-group">
+                                  <div class="material-addone">
+                                    <i class="icofont icofont-user"></i>
+                                  </div>
+                                  <div class="form-group form-primary">
+                                    <input type="text" name="footer-email" class="form-control" required="">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Full Name</label>
+                                  </div>
+                                </div>
+                                <div class="material-group">
+                                  <div class="material-addone">
+                                    <i class="fa fa-mars-double"></i>
+                                  </div>
+                                  <div class="form-group form-primary">
+                                    <div class="form-radio">
+                                      <div class="group-add-on">
+                                        <div class="radio radiofill radio-inline">
+                                          <label>
+                                            <input type="radio" name="radio" checked><i class="helper"></i> Male
+                                          </label>
+                                        </div>
+                                        <div class="radio radiofill radio-inline">
+                                          <label>
+                                            <input type="radio" name="radio"><i class="helper"></i> Female
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="material-group">
+                                  <div class="material-addone">
+                                    <i class="fa fa-birthday-cake"></i>
+                                  </div>
+                                  <div class="form-group form-primary">
+                                    <input type="text" name="footer-email" class="form-control" required="">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Select Your Birth Date</label>
+                                  </div>
+                                </div>
+
+
+                                <div class="material-group">
+                                  <div class="material-addone">
+                                    <i class="fa fa-heart"></i>
+                                  </div>
+                                  <div class="form-group form-primary">
+                                    <select id="hello-single" class="form-control">
+                                      <option value="">---- Marital Status ----</option>
+                                      <option value="married">Married</option>
+                                      <option value="unmarried">Unmarried</option>
+                                    </select>
+                                    <span class="form-bar"></span>
+
+                                  </div>
+                                </div>
+
+
+
+                                <div class="material-group">
+                                  <div class="material-addone">
+                                    <i class="icofont icofont-location-pin"></i>
+                                  </div>
+                                  <div class="form-group form-primary">
+                                    <input type="text" name="footer-email" class="form-control" required="">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Address</label>
+                                  </div>
+                                </div>
+
+
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                              <div class="col-lg-6">
+
+                                <div class="material-group">
+                                  <div class="material-addone">
+                                    <i class="icofont icofont-mobile-phone"></i>
+                                  </div>
+                                  <div class="form-group form-primary">
+                                    <input type="text" name="footer-email" class="form-control" required="">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Mobile Number</label>
+                                  </div>
+                                </div>
+
+
+                                <div class="material-group">
+                                  <div class="material-addone">
+                                    <i class="icofont icofont-social-twitter"></i>
+                                  </div>
+                                  <div class="form-group form-primary">
+                                    <input type="text" name="footer-email" class="form-control" required="">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Twitter Id</label>
+                                  </div>
+                                </div>
+
+
+
+                                <div class="material-group">
+                                  <div class="material-addone">
+                                    <i class="icofont icofont-social-skype"></i>
+                                  </div>
+                                  <div class="form-group form-primary">
+                                    <input type="text" name="footer-email" class="form-control" required="">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Skype Id</label>
+                                  </div>
+                                </div>
+
+
+
+
+                                <div class="material-group">
+                                  <div class="material-addone">
+                                    <i class="icofont icofont-earth"></i>
+                                  </div>
+                                  <div class="form-group form-primary">
+                                    <input type="text" name="footer-email" class="form-control" required="">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">website</label>
+                                  </div>
+                                </div>
+
+
+
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                            </div>
+                            <!-- end of row -->
+                            <div class="text-center">
+                              <a href="javascript:" class="btn btn-primary waves-effect waves-light m-r-20">Save</a>
+                              <a href="javascript:" id="edit-cancel" class="btn btn-default waves-effect"
+                                (click)="toggleEditProfile()">Cancel</a>
+                            </div>
+                          </div>
+                          <!-- end of edit info -->
+                        </div>
+                        <!-- end of col-lg-12 -->
+                      </div>
+                      <!-- end of row -->
+                    </div>
+                    <!-- end of edit-info -->
+                  </div>
+                  <!-- end of card-body -->
                 </div>
-                <div class="card-body">
-                  <!-- end of view-info -->
-                  <h1>About me and other</h1>
-                  <!-- end of edit-info -->
-                </div>
-                <!-- end of card-body -->
-              </div>
-              <!-- personal card end-->
-            </div>
-          </ngb-tab>
-          <ngb-tab title="User's Services">
-            <div [@fadeInOutTranslate] class="m-t-15">
-              <!-- info card start -->
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="card-header-text">User Services</h5>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div
-                        class="card b-l-success business-info services m-b-20"
-                      >
-                        <h1>Services</h1>
-                        <!-- end of card-body -->
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5 class="card-header-text">Description About Me</h5>
+                        <button id="edit-info-btn" type="button" class="btn btn-sm btn-primary ripple light pull-right"
+                          (click)="toggleEditAbout()">
+                          <i class="icofont {{ editAboutIcon }}"></i>
+                        </button>
+                      </div>
+                      <div class="card-body user-desc">
+                        <div class="view-desc" *ngIf="editAbout">
+                          <div [innerHTML]="editorContent"></div>
+                        </div>
+                        <div class="edit-desc" *ngIf="!editAbout">
+                          <div class="col-md-12">
+                            <div class="input-group">
+                              <!--<quill-editor [(ngModel)]="editorContent" [options]="editorConfig"
+                                (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)"
+                                (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
+                              </quill-editor>-->
+                            </div>
+                          </div>
+                          <div class="text-center col-sm-12">
+                            <a href="javascript:;" class="btn btn-primary ripple light m-r-20 m-t-40">Save</a>
+                            <a href="javascript:;" id="edit-cancel-btn" class="btn btn-default m-t-40 ripple"
+                              (click)="toggleEditAbout()">Cancel</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!-- personal card end-->
               </div>
-              <!-- info card end -->
-            </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="User's Services">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <!-- info card start -->
+              
+                <!-- info card end -->
+              </div>
+            </ng-template>
           </ngb-tab>
           <ngb-tab title="User's Contacts">
-            <div [@fadeInOutTranslate] class="m-t-15">
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="card-header-text">Contact</h5>
-                </div>
-                <div class="card-body">
-                  Contact body
-                </div>
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+
               </div>
-            </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Reviews">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+
+              </div>
+            </ng-template>
           </ngb-tab>
         </ngb-tabset>
       </div>
