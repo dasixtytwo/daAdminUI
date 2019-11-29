@@ -19,7 +19,7 @@
 			["kebab-case", "camelCase"]
 		],
 		"import-blacklist": [true, "rxjs/Rx"],
-		"indent": [true, "tabs", 2],
+		"indent": false,
 		"interface-name": false,
 		"max-classes-per-file": false,
 		"max-line-length": [
